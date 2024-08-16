@@ -1,39 +1,39 @@
-#include "SuperPacmenState.h"
+#include "SuperPacmanState.h"
 //-------------------------------------
-SuperPacmenState::SuperPacmenState()
+SuperPacmanState::SuperPacmanState()
 	: m_isAttack(false)
 {}
-// return if the superPacmen is not attacking the demon
+// return if the superPacman is not attacking the demon
 //------------------------------------
-bool SuperPacmenState::handleDemonCollision()
+bool SuperPacmanState::handleDemonCollision()
 {
 	return !m_isAttack;
 }
 
 //-------------------------------------------
-bool SuperPacmenState::handleDoorCollision()
+bool SuperPacmanState::handleDoorCollision()
 {
 	return true;
 }
 // this function handle the keybord input and move the player
 //--------------------------------------------
-bool SuperPacmenState::movePacmen(Pacmen& player)
+bool SuperPacmanState::movePacman(Pacman& player)
 {
-	m_isAttack = (player.superPacmenAttack());
+	m_isAttack = (player.superPacmanAttack());
 	return (player.handleKey());
 }
 //---------------------------------------------
-bool SuperPacmenState::isSuper() const
+bool SuperPacmanState::isSuper() const
 {
 	return true;
 }
 //----------------------------------------------
-bool SuperPacmenState::getAttack() const
+bool SuperPacmanState::getAttack() const
 {
 	return m_isAttack;
 }
 //--------------------------------------------
-float SuperPacmenState::getSpeed() const
+float SuperPacmanState::getSpeed() const
 {
 	return (float)2.3;
 }

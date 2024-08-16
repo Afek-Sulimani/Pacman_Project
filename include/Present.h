@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "KillDemonsPresentState.h"
-#include "SuperPacmenPresentState.h"
+#include "SuperPacmanPresentState.h"
 #include "AddTimePresentState.h"
 #include "AddLivePresentState.h"
 #include "StaticObj.h"
-#include "Pacmen.h"
+#include "Pacman.h"
 #include "Demon.h"
 #include <memory>
 
@@ -15,7 +15,7 @@ class Present : public StaticObj
 {
 public:
 	Present(const sf::Vector2f& position);
-	bool handleCollision(Pacmen& gameObj) override;
+	bool handleCollision(Pacman& gameObj) override;
 	bool handleCollision(Demon& gameObj) override;
 
 private:

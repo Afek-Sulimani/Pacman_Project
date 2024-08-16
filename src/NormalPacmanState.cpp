@@ -1,33 +1,33 @@
-#include "NormalPacmenState.h"
+#include "NormalPacmanState.h"
 //------------------------------------
-bool NormalPacmenState::handleDemonCollision()
+bool NormalPacmanState::handleDemonCollision()
 { 
 	return true;
 }
 
-// normal pacmen can not over door
+// normal pacman can not over door
 //-------------------------------------------
-bool NormalPacmenState::handleDoorCollision()
+bool NormalPacmanState::handleDoorCollision()
 { 
 	return false;
 }
 //--------------------------------------------
-bool NormalPacmenState::movePacmen(Pacmen& player)
+bool NormalPacmanState::movePacman(Pacman& player)
 {
 	return (player.handleKey());
 }
 //-------------------------------------------
-bool NormalPacmenState::isSuper() const
+bool NormalPacmanState::isSuper() const
 {
 	return false;
 }
 //-------------------------------------------
-bool NormalPacmenState::getAttack() const
+bool NormalPacmanState::getAttack() const
 {
 	return false;
 }
 //--------------------------------------------
-float NormalPacmenState::getSpeed() const
+float NormalPacmanState::getSpeed() const
 {
 	return 2;
 }

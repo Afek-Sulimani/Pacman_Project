@@ -1,82 +1,82 @@
-#include "Pacmen.h"
+#include "Pacman.h"
 #include <iostream>
 
-Pacmen::Pacmen()
+Pacman::Pacman()
 	: m_attackLen(0),
-	ps(std::make_unique<NormalPacmenState>()),
+	ps(std::make_unique<NormalPacmanState>()),
 	m_playerScore(0),
-	m_superPacmenTime(0),
+	m_superPacmanTime(0),
 	m_shakeScreenLen(0),
 	m_specialAttack(false)
 
 {
-	initPacmen();
+	initPacman();
 	setSpeed(2);
 }
-//update the pacmen position and the original one
+//update the pacman position and the original one
 //-------------------------------------------
-void Pacmen::setPosition(const sf::Vector2f& position)
+void Pacman::setPosition(const sf::Vector2f& position)
 {
 	setOriginalPosition(position);
 	setPositionSprite(position);
 }
-// will init the pacmen class members
+// will init the pacman class members
 //---------------------------------------------
-void Pacmen::initPacmen()
+void Pacman::initPacman()
 {
 	m_dashSound.setBuffer(DataManger::instence().getGameMusic().dashSound);
 	m_attackSound.setBuffer(DataManger::instence().getGameMusic().attackSound);
 	m_transformSound.setBuffer(DataManger::instence().getGameMusic().transformSound);
 	initBarSprites();
-	setTexture(DataManger::instence().getGameTexture().pacmen);
+	setTexture(DataManger::instence().getGameTexture().pacman);
 	m_dashTime = 350;
 	setRecTangle(); //for animation
 }
-//will init the Pacmen skills bar with texutre and position
+//will init the Pacman skills bar with texutre and position
 //-----------------------------------------
-void Pacmen::initBarSprites()
+void Pacman::initBarSprites()
 {
 	m_DashBar.setTexture(DataManger::instence().getGameTexture().dash);
-	m_superPacmenBar.setTexture(DataManger::instence().getGameTexture().superPacmenBar);
+	m_superPacmanBar.setTexture(DataManger::instence().getGameTexture().superPacmanBar);
 	m_DashBar.setTextureRect(sf::IntRect(0, 0, 50, 40));
-	m_superPacmenBar.setTextureRect(sf::IntRect(0, 0, 50, 40));
+	m_superPacmanBar.setTextureRect(sf::IntRect(0, 0, 50, 40));
 }
 
-// will move the pacmen, this function is clocked based each
+// will move the pacman, this function is clocked based each
 // call is a "step", the function recive speed from the state 
 // and diraction from user
 //--------------------------------------------
-void Pacmen::move(const sf::Time& deltaTime)
+void Pacman::move(const sf::Time& deltaTime)
 {
 	handleStep(deltaTime);
 	setSpeed(ps->getSpeed());
-	if (ps->movePacmen(*this))
+	if (ps->movePacman(*this))
 		moveSprite(getDiraction(), getSpeed());
 }
 
 // the function will handle the time counters of
-// the class, such as superPacmen time and Dash time
-// will also update the animation and pacmen skills
+// the class, such as superPacman time and Dash time
+// will also update the animation and pacman skills
 //--------------------------------------------
-void Pacmen::handleStep(const sf::Time& deltaTime)
+void Pacman::handleStep(const sf::Time& deltaTime)
 {
 	if (ps->isSuper())
 	{
-		m_superPacmenTime--;
-		if (m_superPacmenTime < 0)
+		m_superPacmanTime--;
+		if (m_superPacmanTime < 0)
 			backToNormal();
 	}
 	setLastPosition(getPosition());
-	DataManger::instence().updatePacmenPosition(getPosition());
+	DataManger::instence().updatePacmanPosition(getPosition());
 	if (m_dashTime < 350)
 		m_dashTime += 1;
 	handleRectable(deltaTime); //animation
 	updateBars(); //game skill bars
 }
-//this function will handle key from user and set the pacmen diraction 
+//this function will handle key from user and set the pacman diraction 
 // accordingly, will also handle the dash key
 //--------------------------------------------
-bool Pacmen::handleKey()
+bool Pacman::handleKey()
 {
 	static bool right = false;
 	static bool dash = false;
@@ -105,12 +105,12 @@ bool Pacmen::handleKey()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 
-		setScale(1, 1); // turn the pacmen to the right
+		setScale(1, 1); // turn the pacman to the right
 		setDiraction(sf::Vector2f(-1, 0));
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		setScale(-1, 1); //turn the pacmen left
+		setScale(-1, 1); //turn the pacman left
 		setDiraction(sf::Vector2f(1, 0));
 
 	}
@@ -125,14 +125,14 @@ bool Pacmen::handleKey()
 }
 
 //-----------------------------------------------
-bool Pacmen::isSuperPacmenAttack() const
+bool Pacman::isSuperPacmanAttack() const
 {
 	return ps->getAttack();
 }
 //this function will handle user keyboard input of attack
-// will be called only in super-pacmen mode
+// will be called only in super-pacman mode
 //-----------------------------------------------
-bool Pacmen::superPacmenAttack()
+bool Pacman::superPacmanAttack()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || ps->getAttack())
 	{
@@ -140,7 +140,7 @@ bool Pacmen::superPacmenAttack()
 			m_attackSound.play();
 		if (m_attackLen > 0)
 		{
-			SetTopRectangle(100); //animation of attacking super-pacmen
+			SetTopRectangle(100); //animation of attacking super-pacman
 			m_attackLen--;
 			return true;
 		}
@@ -152,47 +152,47 @@ bool Pacmen::superPacmenAttack()
 	}
 	return false;
 }
-//return if the pacmen is in super-pacmen mode
+//return if the pacman is in super-pacman mode
 //-----------------------------------
-bool Pacmen::isSuper() const
+bool Pacman::isSuper() const
 {
 	return(ps->isSuper());
 }
-// will make the pacmen a superPacmen
+// will make the pacman a superPacman
 //----------------------------------
-void Pacmen::makeSuper()
+void Pacman::makeSuper()
 {
 	m_transformSound.play();
-	m_superPacmenTime = 700;
+	m_superPacmanTime = 700;
 	SetTopRectangle(50);
 	setSpeed(3);
-	ps.reset(new SuperPacmenState());
+	ps.reset(new SuperPacmanState());
 }
-// return to normal pacmen
+// return to normal pacman
 //---------------------------------------
-void Pacmen::backToNormal()
+void Pacman::backToNormal()
 {
 	setSpeed(2);
 	SetTopRectangle(0);
-	ps.reset(new NormalPacmenState());
+	ps.reset(new NormalPacmanState());
 }
-//will return if the pacmen collide with demon
+//will return if the pacman collide with demon
 //--------------------------------------
-bool Pacmen::handleCollision(GameObj& gameoObj)
+bool Pacman::handleCollision(GameObj& gameoObj)
 {
 	return gameoObj.handleCollision(*this);
 }
 
 //--------------------------------------
-bool Pacmen::handleCollision(Pacmen& gameObj)
+bool Pacman::handleCollision(Pacman& gameObj)
 {
 	(void)gameObj; // for avoid warning
 	return false;
 }
-// will return true if the pacmen needs to dey, will also kill
-// the demon if was attacking in the collision in super-pacmen mode
+// will return true if the pacman needs to dey, will also kill
+// the demon if was attacking in the collision in super-pacman mode
 //---------------------------------------
-bool Pacmen::handleCollision(Demon& gameObj)
+bool Pacman::handleCollision(Demon& gameObj)
 {
 	if (!ps->getAttack() && !gameObj.isDead())
 	{
@@ -202,9 +202,9 @@ bool Pacmen::handleCollision(Demon& gameObj)
 	}
 	return (!gameObj.isDead() && ps->handleDemonCollision());
 }
-// super-pacmen can break wall will return if the door is broken
+// super-pacman can break wall will return if the door is broken
 //---------------------------------------
-bool Pacmen::handleCollision(Door& gameObj)
+bool Pacman::handleCollision(Door& gameObj)
 {
 	(void)gameObj; // for avoid warning
 	bool toBreak = ps->handleDoorCollision();
@@ -214,7 +214,7 @@ bool Pacmen::handleCollision(Door& gameObj)
 }
 
 //---------------------------------------
-bool Pacmen::handleCollision(Key& gameObj)
+bool Pacman::handleCollision(Key& gameObj)
 {
 	(void)gameObj; // for avoid warning
 	playSound(DataManger::instence().getGameMusic().keySound);
@@ -223,7 +223,7 @@ bool Pacmen::handleCollision(Key& gameObj)
 }
 
 //--------------------------------------
-bool Pacmen::handleCollision(Present& gameObj)
+bool Pacman::handleCollision(Present& gameObj)
 {
 	(void)gameObj; // for avoid warning
 	DataManger::instence().addToScore(5);
@@ -231,7 +231,7 @@ bool Pacmen::handleCollision(Present& gameObj)
 }
 
 //----------------------------------------
-bool Pacmen::handleCollision(Cookie& gameObj)
+bool Pacman::handleCollision(Cookie& gameObj)
 {
 	(void)gameObj; // for avoid warning
 	playSound(DataManger::instence().getGameMusic().coockieSound);
@@ -240,7 +240,7 @@ bool Pacmen::handleCollision(Cookie& gameObj)
 	return false;
 }
 //-----------------------------------------
-bool Pacmen::handleCollision(Wall& gameObj)
+bool Pacman::handleCollision(Wall& gameObj)
 {
 	(void)gameObj; // for avoid warning
 	objectBlocked();
@@ -249,11 +249,11 @@ bool Pacmen::handleCollision(Wall& gameObj)
 // will update the skill bars animation in every step
 // according to the time that have passed since the skill was activited
 //---------------------------------------
-void Pacmen::updateBars()
+void Pacman::updateBars()
 {
 	static int currentSuper = 0;
 	static int currentDash = 6;
-	int newSuper = m_superPacmenTime / 100;
+	int newSuper = m_superPacmanTime / 100;
 	int newDash = m_dashTime / 50;
 	if (currentSuper != newSuper)
 	{
@@ -265,25 +265,25 @@ void Pacmen::updateBars()
 		newDash *= 50;
 		newDash -= 50;
 	}
-	m_superPacmenBar.setTextureRect(sf::IntRect(newSuper, 0, 50, 40)); //for animation
+	m_superPacmanBar.setTextureRect(sf::IntRect(newSuper, 0, 50, 40)); //for animation
 	m_DashBar.setTextureRect(sf::IntRect(newDash, 0, 50, 40));  //for animation
 	currentDash = newDash;
 	currentSuper = newSuper;
 
 }
 //-----------------------------------------
-void Pacmen::drawBars(sf::RenderWindow& window)
+void Pacman::drawBars(sf::RenderWindow& window)
 {
 	shakeScreen(window);
 	m_DashBar.setPosition(DataManger::instence().getLastDataPosition().x,
 		DataManger::instence().getLastDataPosition().y);
-	m_superPacmenBar.setPosition(m_DashBar.getPosition().x + 40, m_DashBar.getPosition().y);
-	window.draw(m_superPacmenBar);
+	m_superPacmanBar.setPosition(m_DashBar.getPosition().x + 40, m_DashBar.getPosition().y);
+	window.draw(m_superPacmanBar);
 	window.draw(m_DashBar);
 }
 
 //--------------------------------------------------
-bool Pacmen::isSpacielAttack()
+bool Pacman::isSpacielAttack()
 {
 	if (m_specialAttack)
 		spacielAttack();
@@ -291,7 +291,7 @@ bool Pacmen::isSpacielAttack()
 }
 
 //---------------------------------------------------
-void Pacmen::setSpecialAttack(const bool& isSpacielAttack)
+void Pacman::setSpecialAttack(const bool& isSpacielAttack)
 {
 	m_specialAttack = isSpacielAttack;
 }
@@ -299,7 +299,7 @@ void Pacmen::setSpecialAttack(const bool& isSpacielAttack)
 // unordinary, the function will recive the window and will move the position 
 // of the screen to add shake effect, will hold 60 frames
 //---------------------------------------------------
-void Pacmen::shakeScreen(sf::RenderWindow& window)
+void Pacman::shakeScreen(sf::RenderWindow& window)
 {
 	sf::Vector2i statingPoint = DataManger::instence().getWindowPosition();
 	if (m_shakeScreenLen == 0)
@@ -318,7 +318,7 @@ void Pacmen::shakeScreen(sf::RenderWindow& window)
 	}
 }
 //---------------------------------------------------
-void Pacmen::spacielAttack()
+void Pacman::spacielAttack()
 {
 	playSound(DataManger::instence().getGameMusic().scream);
 	m_shakeScreenLen = 60;

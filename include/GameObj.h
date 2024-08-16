@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
-class Pacmen;
+class Pacman;
 class Demon;
 class Cookie;
 class Door;
@@ -17,7 +17,7 @@ public:
 	virtual ~GameObj() {};
 	virtual void draw(sf::RenderWindow& window);
 	virtual bool handleCollision(GameObj& gameoObj) = 0;
-	virtual bool handleCollision(Pacmen& gameObj) = 0;
+	virtual bool handleCollision(Pacman& gameObj) = 0;
 	virtual bool handleCollision(Cookie& gameObj) = 0;
 	virtual bool handleCollision(Demon& gameObj) = 0;
 	virtual bool handleCollision(Door& gameObj) = 0;

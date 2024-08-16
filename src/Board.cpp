@@ -31,11 +31,11 @@ void Board::initBoard(float& windowRow, float& windowCol, LevelType type)
 //-------------------------------------------------------------
 void Board::moveObj(const sf::Time& deltaTime)
 {
-	// check if in the last move the pacmen collide with the kill demons present
+	// check if in the last move the pacman collide with the kill demons present
 	if (m_player.isSpacielAttack())  
 		killAllDemons(); // kill al the demons for few seconds and shaking the window
 	DataManger::instence().getTime().handleTime(deltaTime);// updating the clock string 
-	m_player.move(deltaTime);// call to pacmen move func
+	m_player.move(deltaTime);// call to pacman move func
 	handleCollisions(m_player);
 	for (int i = 0; i < m_demons.size(); i++)
 	{
@@ -80,7 +80,7 @@ void Board::handleCollisions(DynamicObj& gameObject)
 		{
 			if (gameObject.handleCollision(*demon))
 			{
-				setDefualt(); // only the pacmen can return true so he died
+				setDefualt(); // only the pacman can return true so he died
 				break;
 			}
 		}
@@ -141,7 +141,7 @@ void Board::changelevel()
 	m_demons.clear();
 }
 
-// when the pacmen collide wuth kill pacmen present
+// when the pacman collide wuth kill pacman present
 //-----------------------------------------
 void Board::killAllDemons()
 {

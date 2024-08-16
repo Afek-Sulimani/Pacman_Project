@@ -10,9 +10,9 @@ bool SmartDemonState::handleDoorCollision()
 {
 	return false;
 }
-//can kill pacmen
+//can kill pacman
 //-------------------------------------
-bool SmartDemonState::handlePacmenCollision()
+bool SmartDemonState::handlePacmanCollision()
 {
 	return true;
 }
@@ -23,7 +23,7 @@ bool SmartDemonState::isDead() const
 }
 /*
 * this will be the move function of the smart demon
-* the function will move the demon towards the pacmen and
+* the function will move the demon towards the pacman and
 * will try not to get blocked in the way, will do 20 moves
 * each "step"
 */
@@ -45,7 +45,7 @@ sf::Vector2f SmartDemonState::moveDemon(Demon& demon) //const
 	return getLastDiraction();
 }
 
-// will find the next "smart move" towards the pacmen
+// will find the next "smart move" towards the pacman
 //-----------------------------------------
 void SmartDemonState::smartNextMove(Demon& demon)
 {
@@ -69,7 +69,7 @@ bool SmartDemonState::isSmart() const
 //----------------------------------------------
 void SmartDemonState::getOutOfBlockSmart(Demon& demon, int diraction1, int diraction2)
 {
-	demon.huntPacmen(diraction1, diraction2);
+	demon.huntPacman(diraction1, diraction2);
 	setDemonBlock(false);
 }
 //smart demon is a little faster the normal one

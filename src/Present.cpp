@@ -1,4 +1,5 @@
 #include "Present.h"
+#include "Present.h"
 
 //present C-Tor Receives position ,
 // loads the texture ascending and places the object according to the position
@@ -16,7 +17,7 @@ Present::Present(const sf::Vector2f& position)
 	switch (present_type)
 	{
 	case 0:
-		ps.reset(new SuperPacmenPresentState);
+		ps.reset(new SuperPacmanPresentState);
 		break;
 	case 1:
 		ps.reset(new AddLivePresentState);
@@ -37,11 +38,11 @@ void Present::initSprite(const sf::Texture& texture)
 	setTexture(texture);
 }
 
-//call the handle collision with pacmen of the present state
-//and for the pacmen func of colliding with present
+//call the handle collision with pacman of the present state
+//and for the pacman func of colliding with present
 // and all the time delete the present  
 //----------------------------------------------
-bool Present::handleCollision(Pacmen & gameObj)
+bool Present::handleCollision(Pacman & gameObj)
 {
 	ps->handleCollision(gameObj);
 	gameObj.handleCollision(*this);

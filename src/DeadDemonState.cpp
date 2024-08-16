@@ -5,9 +5,9 @@ bool DeadDemonState::handleDoorCollision()
 {
 	return false;
 }
-//nothing will happen if the pacmen collide with dead demon
+//nothing will happen if the pacman collide with dead demon
 //---------------------------------
-bool DeadDemonState::handlePacmenCollision()
+bool DeadDemonState::handlePacmanCollision()
 {
 	return false;
 }

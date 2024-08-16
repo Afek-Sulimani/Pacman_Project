@@ -1,8 +1,8 @@
 #include "AddTimePresentState.h"
 
-// collision between add time present and pacmen, 
+// collision between add time present and pacman, 
 //--------------------------------
-void AddTimePresentState::handleCollision(Pacmen& gameObj)
+void AddTimePresentState::handleCollision(Pacman& gameObj)
 {
 	(void)gameObj; // for avoiding warning
 	if(DataManger::instence().getTime().isLimitLevel())

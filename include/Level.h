@@ -13,7 +13,7 @@ enum ObjType
 {
 	COOKIE = '*', 
 	DEMON = '&',
-	PACMEN = 'a',
+	PACMAN = 'a',
 	DOOR = 'D',
 	PRESENT = '$',
 	KEY = '%',
@@ -27,7 +27,7 @@ public:
 	~Level();
 	bool nextLevel(float& winsowRow, float& windowCol);
 	void fillFromStr(std::vector <std::unique_ptr<GameObj>>* objects,
-				std::vector <std::unique_ptr<Demon>>* demons, Pacmen& pacmen);
+				std::vector <std::unique_ptr<Demon>>* demons, Pacman& pacman);
 private:
 	void fillStr();
 	std::unique_ptr<GameObj> createObject(const sf::Vector2f& location, char option);

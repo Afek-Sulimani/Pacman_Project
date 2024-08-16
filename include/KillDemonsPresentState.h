@@ -6,7 +6,7 @@
 class KillDemonsPresentState : public PresentState
 {
 public:
-	void handleCollision(Pacmen& gameObj) override;
+	void handleCollision(Pacman& gameObj) override;
 	sf::Texture& getSptiteTexture() const;
 private:
 };

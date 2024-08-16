@@ -1,17 +1,17 @@
 #pragma once
-#include "PacmenState.h"
+#include "PacmanState.h"
 #include <SFML/Graphics.hpp>
-#include "Pacmen.h"
+#include "Pacman.h"
 
-class Pacmen;
-class NormalPacmenState : public PacmenState
+class Pacman;
+class NormalPacmanState : public PacmanState
 {
 public:
-	NormalPacmenState() {};
-	~NormalPacmenState() {};
+	NormalPacmanState() {};
+	~NormalPacmanState() {};
 	bool handleDemonCollision() override;
 	bool handleDoorCollision() override;
-	bool movePacmen(Pacmen& player);
+	bool movePacman(Pacman& player);
 	bool isSuper() const override;
 	bool getAttack() const;
 	float getSpeed() const;

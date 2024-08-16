@@ -26,7 +26,7 @@ void TimeManager::setTime(int time)
 	}
 }
 
-// adding time if the pacmen collide with add tipe present
+// adding time if the pacman collide with add tipe present
 //--------------------------------------------
 void TimeManager::addTime(const int timeToAdd)
 {

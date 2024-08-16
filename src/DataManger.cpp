@@ -140,17 +140,17 @@ bool DataManger::playerWon() const
 	return false;
 }
 
-// return the pacmen position for smart demons
+// return the pacman position for smart demons
 //-----------------------------------------------
-sf::Vector2f DataManger::getPacmenPosition() const
+sf::Vector2f DataManger::getPacmanPosition() const
 {
-	return m_pacmenPosition;
+	return m_pacmanPosition;
 }
 
 //-----------------------------------------------
-void DataManger::updatePacmenPosition(const sf::Vector2f& position)
+void DataManger::updatePacmanPosition(const sf::Vector2f& position)
 {
-	m_pacmenPosition = position;
+	m_pacmanPosition = position;
 }
 
 //return the position of rectangle of live animation

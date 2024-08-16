@@ -4,7 +4,7 @@
 #include "Demon.h"
 #include "Door.h"
 #include "Key.h"
-#include "Pacmen.h"
+#include "Pacman.h"
 #include "Present.h"
 #include "Wall.h"
 #include <SFML/Audio.hpp>
@@ -40,8 +40,8 @@ public:
 	void decCookie();
 	int getNumOfCookie() const;
 	int getLives() const;
-	sf::Vector2f getPacmenPosition() const;
-	void updatePacmenPosition(const sf::Vector2f& position);
+	sf::Vector2f getPacmanPosition() const;
+	void updatePacmanPosition(const sf::Vector2f& position);
 	sf::Vector2f getLastDataPosition() const;
 	void addLive();
 	void setWindowPosition(const sf::Vector2i& position);
@@ -64,5 +64,5 @@ private:
 	sf::Text m_text;
 	std::string m_informatiomString;
 	sf::Sprite m_livesSprite;
-	sf::Vector2f m_pacmenPosition;
+	sf::Vector2f m_pacmanPosition;
 };

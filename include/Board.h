@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "Backround.h"
-#include "Pacmen.h"
+#include "Pacman.h"
 #include "Level.h"
 #include <vector>
 #include <memory>
@@ -26,7 +26,7 @@ private:
 	std::vector <std::unique_ptr<GameObj>> m_objects;
 	std::vector <std::unique_ptr<Demon>> m_demons;
 	Level m_level;
-	Pacmen m_player;
+	Pacman m_player;
 	Backround m_backround;
 	float m_gameSizeRow;
 	float m_gameSizeCol;

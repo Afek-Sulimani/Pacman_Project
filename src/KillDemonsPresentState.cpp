@@ -1,10 +1,10 @@
 #include "KillDemonsPresentState.h"
 
-//handle the collision of pacmen 
+//handle the collision of pacman 
 // with the present that kill all the demonds for few seconds 
 //  and set the spacial attack to true
 //--------------------------------
-void KillDemonsPresentState::handleCollision(Pacmen& gameObj)
+void KillDemonsPresentState::handleCollision(Pacman& gameObj)
 {
 	gameObj.setSpecialAttack(true);
 }

@@ -1,8 +1,8 @@
 #include "AddLivePresentState.h"
 
-// collision between add live present and pacmen, 
+// collision between add live present and pacman, 
 //--------------------------------
-void AddLivePresentState::handleCollision(Pacmen& gameObj)
+void AddLivePresentState::handleCollision(Pacman& gameObj)
 {
 	(void)gameObj; // for avoid warning 
 	DataManger::instence().addLive();

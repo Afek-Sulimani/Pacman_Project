@@ -5,9 +5,9 @@ bool NormalDemonState::handleDoorCollision()
 {
 	return true;
 }
-//Normal demon can kill pacmen
+//Normal demon can kill pacman
 //-------------------------------------
-bool NormalDemonState::handlePacmenCollision()
+bool NormalDemonState::handlePacmanCollision()
 {
 	return true;
 }

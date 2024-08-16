@@ -16,11 +16,11 @@ void Cookie::initSprite( const sf::Texture& texture)
 	setTexture(texture);
 }
 
-// collision with pacmen fromm cookie
-// calld for the collision from pacmen side
+// collision with pacman fromm cookie
+// calld for the collision from pacman side
 // and return all the times true for delete the object
 //-------------------------------------------
-bool Cookie::handleCollision(Pacmen& gameObj)
+bool Cookie::handleCollision(Pacman& gameObj)
 {
 	gameObj.handleCollision(*this);
 	return true;

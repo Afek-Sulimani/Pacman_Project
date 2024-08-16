@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Board.h"
 #include "GameObj.h"
-#include "Pacmen.h"
+#include "Pacman.h"
 #include "DataManger.h"
 #include "menu.h"
 class Controller

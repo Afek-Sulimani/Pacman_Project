@@ -16,11 +16,11 @@ void Door::initSprite(const sf::Texture& texture)
 	setTexture(texture);
 }
 
-// collision with pacmen from door
-// calld for the collision from pacmen side
+// collision with pacman from door
+// calld for the collision from pacman side
 // and return if delete or not the door Depending if super or not
 //-----------------------------------------------
-bool Door::handleCollision(Pacmen& gameObj)
+bool Door::handleCollision(Pacman& gameObj)
 {
 	return (gameObj.handleCollision(*this));
 }

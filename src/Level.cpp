@@ -82,7 +82,7 @@ void Level::fillStr()
 //update the vectors of the board class
 //------------------------------------------------------------------------
 void Level::fillFromStr(std::vector <std::unique_ptr<GameObj>>* objects,
-				std::vector <std::unique_ptr<Demon>>* demons, Pacmen& pacmen)
+				std::vector <std::unique_ptr<Demon>>* demons, Pacman& pacman)
 {
 	Location temp;
 	DataManger::instence().getTime().setTime(LevelTime);// update the time limit of the level
@@ -99,8 +99,8 @@ void Level::fillFromStr(std::vector <std::unique_ptr<GameObj>>* objects,
 			else if (option == DEMON)// if demon
 				demons->push_back(std::make_unique<Demon>(location, DataManger::instence().getGameTexture().demon[rand() % 5]));
 
-			else if (option == PACMEN)// if pacmen 
-				pacmen.setPosition(location);
+			else if (option == PACMAN)// if Pacman
+				pacman.setPosition(location);
 
 			else//if one of the static objects
 				objects->push_back(createObject(location, option));

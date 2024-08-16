@@ -15,11 +15,11 @@ void Key::initSprite(const sf::Texture& texture)
 	setTexture(texture);
 }
 
-// collision with pacmen from key
-// calld for the collision from pacmen side
+// collision with pacman from key
+// calld for the collision from pacman side
 // and return all the times true for delete the object
 //-----------------------------------------------
-bool Key::handleCollision(Pacmen& gameObj)
+bool Key::handleCollision(Pacman& gameObj)
 {
 	gameObj.handleCollision(*this);
 	return true;

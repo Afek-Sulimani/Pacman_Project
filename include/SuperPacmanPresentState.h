@@ -2,10 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "PresentState.h"
 #include "DataManger.h"
-class SuperPacmenPresentState : public PresentState
+class SuperPacmanPresentState : public PresentState
 {
 public:
-	void handleCollision(Pacmen& gameObj) override;
+	void handleCollision(Pacman& gameObj) override;
 	sf::Texture& getSptiteTexture() const;
 private:
 };

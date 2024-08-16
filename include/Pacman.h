@@ -2,18 +2,18 @@
 #include <SFML/Graphics.hpp>
 #include "DynamicObj.h"
 #include <memory>
-#include "PacmenState.h"
-#include "NormalPacmenState.h"
-#include "SuperPacmenState.h"
+#include "PacmanState.h"
+#include "NormalPacmanState.h"
+#include "SuperPacmanState.h"
 #include "DataManger.h"
 #include <string>
-class Pacmen : public DynamicObj
+class Pacman : public DynamicObj
 {
 public:
-	Pacmen();
-	~Pacmen() {};
+	Pacman();
+	~Pacman() {};
 	bool handleCollision(GameObj& gameoObj) override;
-	bool handleCollision(Pacmen& gameObj) override;
+	bool handleCollision(Pacman& gameObj) override;
 	bool handleCollision(Demon& gameObj) override;
 	bool handleCollision(Door& gameObj) override;
 	bool handleCollision(Key& gameObj) override;
@@ -22,8 +22,8 @@ public:
 	bool handleCollision(Wall& gameObj) override;
 	void move(const sf::Time& deltaTime);
 	void setPosition(const sf::Vector2f& position);
-	bool isSuperPacmenAttack() const;
-	bool superPacmenAttack();
+	bool isSuperPacmanAttack() const;
+	bool superPacmanAttack();
 	bool isSuper() const;
 	bool handleKey();
 	void drawBars(sf::RenderWindow& window);
@@ -37,16 +37,16 @@ private:
 	void spacielAttack();
 	void updateBars();
 	void initBarSprites();
-	void initPacmen();
+	void initPacman();
 	void backToNormal();
 	bool m_specialAttack;
 	int m_dashTime;
 	int m_attackLen;
-	int m_superPacmenTime;
+	int m_superPacmanTime;
 	bool m_isAttack;
 	int m_playerScore;
-	std::unique_ptr<PacmenState> ps;
-	sf::Sprite m_superPacmenBar;
+	std::unique_ptr<PacmanState> ps;
+	sf::Sprite m_superPacmanBar;
 	sf::Sprite m_DashBar;
 	sf::Sound m_attackSound;
 	sf::Sound m_transformSound;

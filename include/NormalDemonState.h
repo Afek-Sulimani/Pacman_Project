@@ -5,7 +5,7 @@ class NormalDemonState : public DemonState
 {
 public:
     bool handleDoorCollision() override ;
-    bool handlePacmenCollision() override ;
+    bool handlePacmanCollision() override ;
     bool isDead() const ;
     sf::Vector2f moveDemon(Demon& demon); 
     float getSpeed() const ;

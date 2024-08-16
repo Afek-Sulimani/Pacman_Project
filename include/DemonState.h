@@ -13,7 +13,7 @@ class DemonState {
 public:
     DemonState();
     virtual bool handleDoorCollision() = 0;
-    virtual bool handlePacmenCollision() = 0;
+    virtual bool handlePacmanCollision() = 0;
     virtual bool isDead() const = 0;
     virtual sf::Vector2f moveDemon(Demon& demon) = 0;
     sf::Vector2f getLastDiraction();

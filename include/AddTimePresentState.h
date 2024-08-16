@@ -8,7 +8,7 @@ const int TIME_TO_ADD = 20;
 class AddTimePresentState : public PresentState
 {
 public:
-	void handleCollision(Pacmen& gameObj);
+	void handleCollision(Pacman& gameObj);
 	sf::Texture& getSptiteTexture() const;
 private:
 };

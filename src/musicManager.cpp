@@ -3,7 +3,7 @@
 //---------------------------------------
 void MusicManager::loadMusic()
 {
-	m_music.openFromFile("PacmenMusic.ogg");
+	m_music.openFromFile("PacmanMusic.ogg");
 	keySound.loadFromFile("keySound.wav");
 	attackSound.loadFromFile("attack.ogg");
 	transformSound.loadFromFile("transform.ogg");

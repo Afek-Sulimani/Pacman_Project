@@ -25,12 +25,12 @@ void GameTexture::loadTexture()
 	gameBackround.loadFromFile("backround.png");
 	upperBlock.loadFromFile("upperBlock.png");
 	bottoBlock.loadFromFile("bottomBlock.png");
-	pacmen.loadFromFile("pacmen3.png");
-	pacmen.loadFromFile("pacmen3.png");
+	pacman.loadFromFile("pacman3.png");
+	pacman.loadFromFile("pacman3.png");
 	hearts.loadFromFile("hearts.png");
 	font.loadFromFile("C:/Windows/Fonts/Impact.ttf");
 	dash.loadFromFile("dash1.png");
-	superPacmenBar.loadFromFile("super1.png");
+	superPacmanBar.loadFromFile("super1.png");
 	transitionBoard.loadFromFile("transitionTexture.png");
 	byebyeBoard.loadFromFile("lose.png");
 	menu.loadFromFile("menu.png");

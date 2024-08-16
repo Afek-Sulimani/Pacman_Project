@@ -44,24 +44,24 @@ void Demon::move(const sf::Time& deltaTime)
 }
 
 // will return true only if the demon collide 
-// with pacmen and the pacmen needs to die
+// with pacman and the pacman needs to die
 //-----------------------------------------------
 bool Demon::handleCollision(GameObj& gameoObj)
 {
 	return gameoObj.handleCollision(*this);
 }
-//this function will handle collision with the pacmen,
-// if the pacmen was attaking the demon, the demon will die
-// will return to the pacmen if he was attacked by demon
+//this function will handle collision with the pacman,
+// if the pacman was attaking the demon, the demon will die
+// will return to the pacman if he was attacked by demon
 //-----------------------------------------------
-bool Demon::handleCollision(Pacmen& gameObj)
+bool Demon::handleCollision(Pacman& gameObj)
 {
-	if (gameObj.isSuperPacmenAttack() && !isDead())
+	if (gameObj.isSuperPacmanAttack() && !isDead())
 	{
 		beDead();
 		DataManger::instence().addToScore(50); //player recive 50 points for 
 	}											//killing demon
-	return ps->handlePacmenCollision();
+	return ps->handlePacmanCollision();
 }
 //Smart demon will not collide with other smart demon!
 // this function will block the current demon.
@@ -168,19 +168,19 @@ void Demon::setBlocked()
 *  this will be another export move function of the demon
 *  that will be used by the smart demon state, this algorithrm is
 *  a bit more complicaed and will be able to close up to 2 diractions
-*  of the demon and help him find better way to get to the pacmen
+*  of the demon and help him find better way to get to the pacman
 */
 //----------------------------------------------
-void Demon::huntPacmen(int diraction1, int diraction2)
+void Demon::huntPacman(int diraction1, int diraction2)
 {
-	sf::Vector2f PacmenPosition;
-	PacmenPosition = (DataManger::instence().getPacmenPosition());
+	sf::Vector2f pacmanPosition;
+	pacmanPosition = (DataManger::instence().getPacmanPosition());
 	float arr[4] = { 0 };
 	int newDiraction = -1; // will be the new best diraction for the demon
-	arr[DOWN] = caculateSIzeFromPacmen(0, -1);
-	arr[UP] = caculateSIzeFromPacmen(0, 1);
-	arr[RIGHT] = caculateSIzeFromPacmen(1, 0);
-	arr[LEFT] = caculateSIzeFromPacmen(-1, 0);
+	arr[DOWN] = caculateSIzeFromPacman(0, -1);
+	arr[UP] = caculateSIzeFromPacman(0, 1);
+	arr[RIGHT] = caculateSIzeFromPacman(1, 0);
+	arr[LEFT] = caculateSIzeFromPacman(-1, 0);
 	if (diraction1 != -1) // -1 in diraction means there is no closed way
 		arr[diraction1] = -1;
 	if (diraction2 != -1)
@@ -196,14 +196,14 @@ void Demon::huntPacmen(int diraction1, int diraction2)
 	ps->setDemonBlock(false);
 }
 
-//caculate the range from the pacmen by sqrt(x^2 + y^2)
+//caculate the range from the pacman by sqrt(x^2 + y^2)
 //------------------------------------------------------------
-float Demon::caculateSIzeFromPacmen(int addToX, int addToY)
+float Demon::caculateSIzeFromPacman(int addToX, int addToY)
 {
-	sf::Vector2f PacmenPosition;
-	PacmenPosition = (DataManger::instence().getPacmenPosition());
-	int x = (int)abs(getPosition().x + addToX - PacmenPosition.x);
-	int y = (int)abs(getPosition().y + addToY - PacmenPosition.y);
+	sf::Vector2f pacmanPosition;
+	pacmanPosition = (DataManger::instence().getPacmanPosition());
+	int x = (int)abs(getPosition().x + addToX - pacmanPosition.x);
+	int y = (int)abs(getPosition().y + addToY - pacmanPosition.y);
 	return (float)sqrt((pow(x, 2) + pow(y, 2)));
 }
 

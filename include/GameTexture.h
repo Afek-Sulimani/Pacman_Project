@@ -7,7 +7,7 @@ struct GameTexture
 	sf::Texture present; //live 
 	sf::Texture present1;// kill demon
 	sf::Texture present2;// time
-	sf::Texture present3;// superpacmen 
+	sf::Texture present3;// superpacman 
 	sf::Texture key;
 	sf::Texture door;
 	sf::Texture wall;
@@ -19,12 +19,12 @@ struct GameTexture
 	sf::Texture upperBlock;
 	sf::Texture bottoBlock;
 	sf::Texture pcamen;
-	sf::Texture superPacmen;
-	sf::Texture pacmen;
+	sf::Texture superPacman;
+	sf::Texture pacman;
 	sf::Font font;
 	sf::Texture hearts;
 	sf::Texture dash;
-	sf::Texture superPacmenBar;
+	sf::Texture superPacmanBar;
 	sf::Texture transitionBoard;
 	sf::Texture byebyeBoard;
 	sf::Texture menu;

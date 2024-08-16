@@ -16,7 +16,7 @@ void Wall::initSprite(const sf::Texture& texture)
 }
 // the wall will never delete so we return false
 //--------------------------------------------
-bool Wall::handleCollision(Pacmen & gameObj)
+bool Wall::handleCollision(Pacman & gameObj)
 {
 	gameObj.handleCollision(*this);
 	return false;

@@ -8,7 +8,7 @@ class SmartDemonState :public DemonState
 public:
     SmartDemonState();
     bool handleDoorCollision() override ;
-    bool handlePacmenCollision() override ;
+    bool handlePacmanCollision() override ;
     bool isDead() const ;
     sf::Vector2f moveDemon(Demon& demon);
     void smartNextMove(Demon& demon);

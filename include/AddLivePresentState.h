@@ -6,7 +6,7 @@
 class AddLivePresentState : public PresentState
 {
 public:
-	void handleCollision(Pacmen& gameObj);
+	void handleCollision(Pacman& gameObj);
 	sf::Texture& getSptiteTexture() const;
 private:
 };

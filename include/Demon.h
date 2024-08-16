@@ -17,7 +17,7 @@ public:
 	void move(const sf::Time& deltaTime);
 	~Demon() {};
 	bool handleCollision(GameObj& gameoObj) override;
-	bool handleCollision(Pacmen& gameObj) override;
+	bool handleCollision(Pacman& gameObj) override;
 	bool handleCollision(Demon& gameObj) override;
 	bool handleCollision(Door& gameObj) override;
 	bool handleCollision(Key& gameObj) override;
@@ -26,11 +26,11 @@ public:
 	bool handleCollision(Wall& gameObj) override;
 	void setBlocked();
 	bool isDead() const;
-	void huntPacmen(int diraction1, int diraction2);
+	void huntPacman(int diraction1, int diraction2);
 	void beDead();
 	bool isSmart() const;
 private:
-	float caculateSIzeFromPacmen(int addToX, int addToY);
+	float caculateSIzeFromPacman(int addToX, int addToY);
 	void backToNormal();
 	int m_deadTime;
 	void beSmart();
